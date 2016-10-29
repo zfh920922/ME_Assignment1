@@ -40,37 +40,34 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" upperBound="-1"
         eType="#//DataType" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="State" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="State" abstract="true" eSuperTypes="#//Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition">
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node">
     <eOperations name="fire"/>
     <eOperations name="isActivated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingTransition" upperBound="-1"
-        eType="#//SelectionConvergence"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//NormalState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Edge"
+        eOpposite="#//Edge/connectingEdge"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectionDivergence">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransitions" lowerBound="2"
-        upperBound="-1" eType="#//Transition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionDivergence" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectingEdge" lowerBound="2"
+        upperBound="2" eType="#//Edge" eOpposite="#//Edge/selectiondivergence"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergence">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingState" lowerBound="1"
-        eType="#//NormalState"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergence" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectingEdges" lowerBound="2"
+        upperBound="2" eType="#//Edge" eOpposite="#//Edge/selectionconvergence"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatesML">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
-        eType="#//State" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//Transition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="changeevent" upperBound="-1"
-        eType="#//ChangeEvent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemunits" upperBound="-1"
         eType="#//SystemUnits" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" upperBound="-1" eType="#//Node"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge" upperBound="-1" eType="#//Edge"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true" eSuperTypes="#//Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
   </eClassifiers>
@@ -79,21 +76,41 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Edge">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge" lowerBound="1" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectionconvergence" eType="#//SelectionConvergence"
+        eOpposite="#//SelectionConvergence/connectingEdges"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingEdges" eType="#//TerminalState"
+        eOpposite="#//TerminalState/terminalStates"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingEdge" eType="#//InitialState"
+        eOpposite="#//InitialState/initialState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectingEdges" eType="#//NormalState"
+        eOpposite="#//NormalState/normalState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectiondivergence" eType="#//SelectionDivergence"
+        eOpposite="#//SelectionDivergence/connectingEdge"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectingEdge" lowerBound="2"
+        upperBound="2" eType="#//Transition" eOpposite="#//Transition/transition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//State">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitial" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" eType="#//Edge"
+        eOpposite="#//Edge/incomingEdge"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NormalState" eSuperTypes="#//State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="normalState" lowerBound="2"
+        upperBound="2" eType="#//Edge" eOpposite="#//Edge/connectingEdges"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
+        eType="#//Function"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TerminalState" eSuperTypes="#//State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminalStates" eType="#//Edge"
+        eOpposite="#//Edge/outgoingEdges"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTerminal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NormalState" eSuperTypes="#//State">
-    <eOperations name="followLine"/>
-    <eOperations name="pickDirection">
-      <eParameters name="Direction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingState" eType="#//SelectionDivergence"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransition" eType="#//Transition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="2" upperBound="2"
+        eType="#//Edge" eOpposite="#//Edge/edge"/>
   </eClassifiers>
 </ecore:EPackage>
