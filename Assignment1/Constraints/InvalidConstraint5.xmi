@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statesml:StatesML
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <systemunits
+      name="SimpleLineFollowingRobot">
+    <attribute
+        name="surfaceColor">
+      <datatype
+          name="String"/>
+    </attribute>
+  </systemunits>
+  <datatypelibrary
+      name="PrimitiveDataTypes">
+    <datatype
+        name="Boolean"/>
+  </datatypelibrary>
+</statesml:StatesML>
