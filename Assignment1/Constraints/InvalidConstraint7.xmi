@@ -6,15 +6,18 @@
     xmlns:statesml="http://www.example.org/statesml"
     xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
   <systemunits
-      name="systemUnit">
+      name="systemUnitInvalid">
     <function
         name="f1"/>
   </systemunits>
   <node xsi:type="statesml:State"
+      edge="//@edge.0"
       function="//@systemunits.0/@function.0"
       name="initialState"
       isInitial="true"/>
   <node xsi:type="statesml:Transition"
+      edge="//@edge.0"
       name="transition"/>
-  <edge name="firstEdge"/>
+  <edge name="firstEdge"
+      node="//@node.0 //@node.1"/>
 </statesml:StatesML>

@@ -5,6 +5,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:statesml="http://www.example.org/statesml"
     xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <systemunits
+      name="system"/>
   <node xsi:type="statesml:State"
       edge="//@edge.0"
       name="initialState"
