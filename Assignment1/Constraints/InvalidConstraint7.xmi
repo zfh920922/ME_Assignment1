@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<statesml:StatesML xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:statesml="http://www.example.org/statesml" xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore"/>
+<statesml:StatesML
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <systemunits
+      name="systemUnit">
+    <function
+        name="f1"/>
+  </systemunits>
+  <node xsi:type="statesml:State"
+      function="//@systemunits.0/@function.0"
+      name="initialState"
+      isInitial="true"/>
+  <node xsi:type="statesml:Transition"
+      name="transition"/>
+  <edge name="firstEdge"/>
+</statesml:StatesML>
