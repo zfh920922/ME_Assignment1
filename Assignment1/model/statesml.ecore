@@ -64,12 +64,6 @@
         eType="#//DataType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//Node">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="singleInitialState"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="singleInitialState" value="isInitial -> size() = 1"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitial" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTerminal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
@@ -80,10 +74,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergence" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="StatesML">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="uniqueSystemUnitNames"/>
+      <details key="constraints" value="uniqueSystemUnitNames singleInitialState"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="uniqueSystemUnitNames" value="self.systemunits->forAll(c1, c2 | c1 &lt;> c2 implies c1.name &lt;> c2.name)"/>
+      <details key="singleInitialState" value="self.node -> select(n:Node|n.oclIsKindOf(State) and n.oclAsType(State).isInitial) -> size()= 1"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
         eType="#//Event" containment="true"/>
@@ -112,7 +107,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="2" upperBound="2"
         eType="#//Node" eOpposite="#//Node/edge"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Node">
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="edge" lowerBound="1" upperBound="-1"
         eType="#//Edge" eOpposite="#//Edge/node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
