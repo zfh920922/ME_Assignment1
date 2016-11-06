@@ -18,4 +18,13 @@
     <datatype
         name="Boolean"/>
   </datatypelibrary>
+  <node xsi:type="statesml:State"
+      edge="//@edge.0"
+      name="initialState"
+      isInitial="true"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.0"
+      name="targetNode"/>
+  <edge name="edge"
+      node="//@node.0 //@node.1"/>
 </statesml:StatesML>

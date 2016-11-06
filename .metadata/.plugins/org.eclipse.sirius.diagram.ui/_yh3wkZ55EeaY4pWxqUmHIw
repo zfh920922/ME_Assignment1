@@ -1,6 +1,6 @@
-#Sun Nov 06 10:53:51 CET 2016
-viewport.x=490
+#Sun Nov 06 11:14:07 CET 2016
 rulergrid.snaptogeometry=true
+viewport.x=72
 zoom=1.0
 print.margin.right=0.5
 rulergrid.rulerunit=0
@@ -12,9 +12,12 @@ print.useInches=true
 rulergrid.gridspacing=0.125
 print.page.height=11.0
 rulergrid.gridlinecolor=12632256
+>>>>>>>=refs/heads/kathlinar
 print.margin.bottom=0.5
 rulergrid.gridlinestyle=6
 rulergrid.gridlevel=true
+<<<<<<<=HEAD
 print.margin.top=0.5
 print.usePortrait=true
-viewport.y=344
+=\=\=\=\=\=\=
+viewport.y=495
