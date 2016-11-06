@@ -91,13 +91,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatesML">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="uniqueSystemUnitNames singleInitialState noFunctionsInInitialState noFunctionsInTerminalState"/>
+      <details key="constraints" value="uniqueSystemUnitNames singleInitialState noFunctionsInInitialState noFunctionsInTerminalState initialStateHasOneEdge"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="uniqueSystemUnitNames" value="self.systemunits->forAll(c1, c2 | c1 &lt;> c2 implies c1.name &lt;> c2.name)"/>
       <details key="singleInitialState" value="self.node -> select(n:Node|n.oclIsKindOf(State) and n.oclAsType(State).isInitial) -> size()= 1"/>
       <details key="noFunctionsInInitialState" value="self.node -> select(n:Node|n.oclIsKindOf(State) and n.oclAsType(State).isInitial).function -> isEmpty()"/>
       <details key="noFunctionsInTerminalState" value="self.node -> select(n:Node|n.oclIsKindOf(State) and n.oclAsType(State).isTerminal).function -> isEmpty()"/>
+      <details key="initialStateHasOneEdge" value="node -> select(n:Node|n.oclIsKindOf(State) and n.oclAsType(State).isInitial).edge -> size() = 1"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
         eType="#//Event" containment="true"/>

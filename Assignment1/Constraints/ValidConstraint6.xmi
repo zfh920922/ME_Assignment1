@@ -5,18 +5,21 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:statesml="http://www.example.org/statesml"
     xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
-  <systemunits
-      name="systemUnit">
-    <function
-        name="f1"/>
-  </systemunits>
   <node xsi:type="statesml:State"
       edge="//@edge.0"
       name="initialState"
       isInitial="true"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.1"
+      name="terminal"
+      isTerminal="true"
+      transition="//@node.2"/>
   <node xsi:type="statesml:Transition"
-      edge="//@edge.0"
-      name="transition"/>
-  <edge name="first"
-      node="//@node.0 //@node.1"/>
+      edge="//@edge.0 //@edge.1"
+      name="transition"
+      state="//@node.1"/>
+  <edge name="initial2transition"
+      node="//@node.0 //@node.2"/>
+  <edge name="transition2terminal"
+      node="//@node.1 //@node.2"/>
 </statesml:StatesML>

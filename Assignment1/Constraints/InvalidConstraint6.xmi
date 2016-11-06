@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statesml:StatesML
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <node xsi:type="statesml:State"
+      edge="//@edge.0 //@edge.1"
+      name="initialState"
+      isInitial="true"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.2"
+      name="terminalState"
+      isTerminal="true"
+      transition="//@node.3"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.0"
+      name="transition1"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.2 //@edge.1"
+      name="transition2"
+      state="//@node.1"/>
+  <edge name="edge1"
+      node="//@node.0 //@node.2"/>
+  <edge name="edge2"
+      node="//@node.3 //@node.0"/>
+  <edge name="edge3"
+      node="//@node.1 //@node.3"/>
+</statesml:StatesML>
