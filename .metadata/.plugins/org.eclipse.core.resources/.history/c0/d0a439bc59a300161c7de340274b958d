@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statesml:StatesML
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <node xsi:type="statesml:State"
+      edge="//@edge.0"
+      name="initialState1"
+      isInitial="true"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.1"
+      name="initialState2"
+      isInitial="true"/>
+  <node xsi:type="statesml:SelectionDivergence"
+      edge="//@edge.0 //@edge.1"
+      name="targetNode"/>
+  <edge name="first"
+      node="//@node.0 //@node.2"/>
+  <edge name="second"
+      node="//@node.2 //@node.1"/>
+</statesml:StatesML>

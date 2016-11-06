@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+org.eclipse.ocl.xtext.oclinecore.OCLinEcore.templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.AnnotationCS" deleted\="false" description\="" enabled\="true" name\="Context">context ${cursor}${type}\ninv ${cursor}${name}\: true\n</template></templates>
