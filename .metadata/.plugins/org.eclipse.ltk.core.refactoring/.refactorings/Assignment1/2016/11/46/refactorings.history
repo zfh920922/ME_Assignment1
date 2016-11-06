@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;ValidConstraint1.xmi&apos; to &apos;Constraints&apos;" description="Move &apos;ValidConstraint1.xmi&apos; to &apos;Constraints&apos;" destination="Constraints" element1="model/ValidConstraint1.xmi" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1478429742167" updateReferences="true"/>
+</session>
