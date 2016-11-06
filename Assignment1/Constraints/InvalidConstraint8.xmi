@@ -5,9 +5,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:statesml="http://www.example.org/statesml"
     xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
-  <node xsi:type="statesml:SelectionDivergence"
-      edge="//@edge.0 //@edge.2"
-      name="targetNode"/>
   <node xsi:type="statesml:State"
       edge="//@edge.0 //@edge.1"
       name="normalState"/>
@@ -19,10 +16,13 @@
       edge="//@edge.2"
       name="initialState2"
       isInitial="true"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.0 //@edge.2"
+      name="transition"/>
   <edge name="first"
-      node="//@node.0 //@node.1"/>
+      node="//@node.0 //@node.3"/>
   <edge name="second"
-      node="//@node.2 //@node.1"/>
+      node="//@node.1 //@node.0"/>
   <edge name="third"
-      node="//@node.3 //@node.0"/>
+      node="//@node.2 //@node.3"/>
 </statesml:StatesML>
