@@ -4,6 +4,92 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:statesml="http://www.example.org/statesml"
-    xsi:schemaLocation="http://www.example.org/statesml file:/home/fh/ME_Assignment1/Assignment1/model/statesml.ecore">
-  <node xsi:type="statesml:State"/>
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <event xsi:type="statesml:ChangeEvent"
+      name="SurfaceColorIsWhite"/>
+  <event xsi:type="statesml:ChangeEvent"
+      name="SurfaceColorIsRed"/>
+  <systemunits
+      name="systemUnit">
+    <function
+        name="followLine"/>
+    <function
+        name="pickDirection">
+      <inParameter
+          name="Color">
+        <datatype
+            name="Type"/>
+      </inParameter>
+    </function>
+  </systemunits>
+  <datatypelibrary
+      name="DataTypeLibrary">
+    <datatype
+        name="Type"/>
+  </datatypelibrary>
+  <node xsi:type="statesml:State"
+      edge="//@edge.0"
+      name="InitialStep"
+      isInitial="true"
+      transition="//@node.1"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.0 //@edge.1"
+      name="FollowLine"
+      state="//@node.0"
+      selectionconvergence="//@node.2"/>
+  <node xsi:type="statesml:SelectionConvergence"
+      edge="//@edge.1 //@edge.2 //@edge.9"
+      name="ConvergeToFollowLine"
+      state="//@node.3"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.2 //@edge.3"
+      function="//@systemunits.0/@function.0"
+      name="FollowingLine"/>
+  <node xsi:type="statesml:SelectionDivergence"
+      edge="//@edge.3 //@edge.6"
+      name="DivergeAfterFollowLine"
+      transition="//@node.5 //@node.6"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.4 //@edge.5"
+      name="Terminate"
+      trigger="SurfaceColorIsWhite"
+      state="//@node.7"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.6 //@edge.4 //@edge.7"
+      name="Reverse"
+      trigger="SurfaceColorIsRed"
+      state="//@node.8"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.5"
+      name="TerminalStep"
+      isTerminal="true"
+      transition="//@node.5"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.8 //@edge.7"
+      name="Reversing"
+      transition="//@node.6"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.8 //@edge.9"
+      name="RepeatFollowLineAfterReversing"
+      selectionconvergence="//@node.2"/>
+  <edge name="InitialStep2FollowLine"
+      node="//@node.0 //@node.1"/>
+  <edge name="FollowLine2ConvergeToFollowLine"
+      node="//@node.2 //@node.1"/>
+  <edge name="ConvergeToFollowLine2FollowingLine"
+      node="//@node.2 //@node.3"/>
+  <edge name="FollowingLine2DivergeAfterFollowLine"
+      node="//@node.3 //@node.4"/>
+  <edge name="DivergeAfterFollowLine2Terminate"
+      node="//@node.5 //@node.6"/>
+  <edge name="Terminate2TerminalStep"
+      node="//@node.5 //@node.7"/>
+  <edge name="DivergeAfterFollowLine2Reverse"
+      node="//@node.4 //@node.6"/>
+  <edge name="Reverse2Reversing"
+      node="//@node.6 //@node.8"/>
+  <edge name="Reversing2RepeatFollowLineAfterReversing"
+      node="//@node.8 //@node.9"/>
+  <edge name="RepeatFollowLineAfterReversing2ConvergeToFollowLine"
+      node="//@node.9 //@node.2"/>
 </statesml:StatesML>
