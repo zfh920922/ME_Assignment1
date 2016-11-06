@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statesml:StatesML
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore">
+  <event xsi:type="statesml:ChangeEvent"
+      name="changeEvent"
+      isFulfilled="true"/>
+  <event xsi:type="statesml:ChangeEvent"
+      name="changeEvent2"/>
+  <node xsi:type="statesml:State"
+      edge="//@edge.0"
+      name="initialState"
+      isInitial="true"
+      selectiondivergence="//@node.1"/>
+  <node xsi:type="statesml:SelectionDivergence"
+      edge="//@edge.1 //@edge.0 //@edge.2"
+      name="divergence"
+      transition="//@node.2 //@node.3"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.1"
+      name="triggeredTransition"
+      trigger="changeEvent"/>
+  <node xsi:type="statesml:Transition"
+      edge="//@edge.2"
+      name="transition"
+      trigger="changeEvent2"/>
+  <edge name="1"
+      node="//@node.1 //@node.0"/>
+  <edge name="2"
+      node="//@node.1 //@node.2"/>
+  <edge name="3"
+      node="//@node.1 //@node.3"/>
+</statesml:StatesML>
