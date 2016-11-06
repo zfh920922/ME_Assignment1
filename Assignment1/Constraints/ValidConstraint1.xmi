@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statesml:DataTypeLibrary
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:statesml="http://www.example.org/statesml"
+    xsi:schemaLocation="http://www.example.org/statesml ../model/statesml.ecore"
+    name="PrimitiveDataTypes">
+  <datatype
+      name="Boolean">
+    <function
+        name="equals">
+      <inParameter
+          name="s1">
+        <datatype
+            name="String"/>
+      </inParameter>
+      <inParameter
+          name="s2">
+        <datatype
+            name="String"/>
+      </inParameter>
+    </function>
+  </datatype>
+  <datatype
+      name="String"/>
+</statesml:DataTypeLibrary>
